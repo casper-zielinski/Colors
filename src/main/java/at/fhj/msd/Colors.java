@@ -3,8 +3,6 @@ package at.fhj.msd;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.standard.ColorSupported;
-
 public class Colors {
       private int red;
       private int green;
@@ -38,10 +36,15 @@ public class Colors {
             return String.format("\'rgb(%d, %d, %d)\'", this.red, this.green, this.blue);
       }
 
-      public boolean equals(Colors other)
+      
+      @Override
+      public boolean equals(Object other)
       {
-            return (other.red == this.red) && (other.green == this.green)
-            && (other.blue == this.blue);
+            if (this == other) return true; //--> Direkte Überprüfung; phyische.
+            if (other == null || getClass() != other.getClass()) return false;
+            Colors colory = (Colors)(other);
+            return (colory.red == this.red) && (colory.green == this.green)
+                 && (colory.blue == this.blue); //--> eigentliche überprüfung.
       }
 
       public static List<Colors> random(int amount)
@@ -63,20 +66,12 @@ public class Colors {
             List<Colors> colours = new ArrayList<>();
             for (int i = 0; i < colors.size(); i++)
             {
-                  for (int j = 0; j < colors.size(); j++)
-                  {
-                        if ((colors.get(i)).equals(colors.get(j)))
-                        {
-                              break;
-                        }
-                        else
-                        {
-                              colours.add(colors.get(i));
-                        }
-                  }
+                  if (!(colours.contains(colors.get(i)))) colours.add(colors.get(i));    
             }
-            return colours;
+                  return colours;
+            }
+            
       }
 
 
-}
+
