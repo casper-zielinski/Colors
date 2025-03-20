@@ -1,6 +1,7 @@
 package at.fhj.msd;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -8,12 +9,9 @@ import java.util.Set;
  */
 public class App {
     public static void main(String[] args) {
-        Set<Colors> colorSet = new HashSet<>();
-        colorSet.add(new Colors(255, 0, 0));
-        colorSet.add(new Colors(255, 0, 0));
-        colorSet.add(new Colors(255, 0, 0));
+       List<Colors> colors = Colors.random(10);
+        System.out.println(colors);
 
-        System.out.println(colorSet.size());
 
     }
 }

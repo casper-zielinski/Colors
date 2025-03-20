@@ -23,8 +23,8 @@ public class Colors {
 
       public String hexFormat()
       {
-            return String.format("\"#%s%s%s\"", Integer.toHexString(red).toUpperCase(),
-            Integer.toHexString(green).toUpperCase(), Integer.toHexString(blue).toUpperCase());
+            return String.format("\"#%s%s%s\"", Integer.toHexString(red),
+            Integer.toHexString(green), Integer.toHexString(blue)).toUpperCase();
       }
 
       public String rgbFormat()
@@ -43,8 +43,8 @@ public class Colors {
       public boolean equals(Object other)
       {
             if (this == other) return true; //--> Direkte Überprüfung; phyische.
-            if (other == null || getClass() != other.getClass()) return false;
-            Colors colory = (Colors)(other);
+            if (other == null || getClass() != other.getClass()) return false; // oder mit if (!(o instanceof Color))
+            Colors colory = (Colors)(other); // Casting vom Object --zu--> Colors, das geht, wenn sie sich verwand sind
             return (colory.red == this.red) && (colory.green == this.green)
                  && (colory.blue == this.blue); //--> eigentliche überprüfung.
       }
