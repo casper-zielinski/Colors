@@ -2,8 +2,10 @@ package at.fhj.msd;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Colors {
+
       private int red;
       private int green;
       private int blue;
@@ -69,9 +71,31 @@ public class Colors {
                   if (!(colours.contains(colors.get(i)))) colours.add(colors.get(i));    
             }
                   return colours;
-            }
-            
       }
+         
+            public Colors oppositeColor(Colors color)
+      {
+            int r = 255 - this.red; 
+            int g = 255 - this.green;
+            int b = 255 - this.blue;
+
+            Colors colory = new Colors(r, g, b);
+            return colory;
+      } 
+
+      @Override
+      public int hashCode()
+      {
+            return Objects.hash(this.red, this.green, this.blue);
+      }
+
+}
+
+
+
+
+     
+
 
 
 
